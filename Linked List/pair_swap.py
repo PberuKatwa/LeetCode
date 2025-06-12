@@ -37,19 +37,28 @@ def show_linked_list(head:LinkedList):
 def pair_swap(head:LinkedList):
 
     current = head
+    new_head = head.next
+    prev = None
     list_output = ""
 
-    while current.next.next:
-        print("starrt", current.data, current.next.data)
-        now = current.data
-        pair = current.next.data
-        print("nowww", now, "pairr", pair)
-        current.data = pair
-        current.next.data = now
-        current.next = current.next.next
-        print("current", current.data, "next", current.next.data)
+    while current and current.next:
+        print("current data", current.data)
+        nxt = current.next
+        next_pair = nxt.next
 
-    return current
+        current.next = next_pair
+        nxt.next = current
+
+        if prev:
+            prev.next = nxt
+
+
+        prev = current
+        current = next_pair
+
+
+
+    return new_head
 
 
 head_2 = pair_swap(head)

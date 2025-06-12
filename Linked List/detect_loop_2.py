@@ -16,7 +16,9 @@ class LinkedList:
 head = LinkedList(1)
 head.next = LinkedList(3)
 head.next.next = LinkedList(4)
-head.next.next.next = head
+head.next.next.next = LinkedList(5)
+# head.next.next = LinkedList(4)
+head.next.next.next.next = head
 
 def show_linked_list(input:LinkedList):
     current = head
@@ -35,27 +37,18 @@ def show_linked_list(input:LinkedList):
 
 def detect_loop(input:LinkedList):
 
-    prev = head
-    print("prevv data", prev.data)
-    current = head.next
-    print("current",current.data)
-    nxt = current.next
     is_loop = False
+    slow = head
+    fast = head.next
 
-    while current:
-        
-        if prev == current.next:
-            print(f'prevvvv {prev.data}, current {current.data}')
+    while fast and fast.next:
+        print("slowww", slow.data, "fastt", fast.data)
+        if slow == fast:
             is_loop = True
             return is_loop
-        else:
-            print("were else", current.data, "prevv", prev.data)
-            prev = current
-            current = current.next
-
-            if current.next is None:
-                prev = nxt
-                current = nxt.next
+        
+        slow = slow.next
+        fast = fast.next.next
 
 
 

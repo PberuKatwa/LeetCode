@@ -39,9 +39,9 @@ def pair_swap(head:LinkedList):
     current = head
     new_head = head.next
     prev = None
-    list_output = ""
 
     while current and current.next:
+
         print("current 11", current.data, "neww head", new_head.data)
 
         nxt = current.next
