@@ -13,7 +13,7 @@ def first_occurrence(haystack:str,needle:str):
 
     for i in range(1 , len(haystack)):
 
-        print(haystack[i-1],"needle", needle[n])
+        print(haystack[i-1],"needle", needle[n], "iiiiii", i)
 
         while n <= len(needle) and ( needle[n-1] == haystack[i-1] ) :
             print( "needle",needle[n-1],"hayyy",haystack[i-1], "nnn", n )
