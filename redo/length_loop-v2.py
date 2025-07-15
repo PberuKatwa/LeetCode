@@ -36,29 +36,28 @@ def print_linked_list(input:LinkedList):
 def length_loop(head:LinkedList):
 
     slow = head
-    print("slowwww", slow.data)
     fast = head
-    print("fasttt", fast.data)
-    is_loop = False
+    loop_exists = False
     length = 0
 
-    while not is_loop:
+    while fast and fast.next:
         slow = slow.next
         fast = fast.next.next
 
-        if(slow == fast):
-            print("equalll", slow.data, "fasst", fast.data)
-            now = slow
-            length = length + 1
-            now = now.next
-            print("loop check start", now.data, "sloww", slow.data)
+        if slow == fast:
+            loop_exists = True
+            break
 
-            while now != slow:
-                print("loop check prosss", now.data, "sloww", slow.data)
+    if not loop_exists:
+        return length
+    
+    temp = slow.next
 
-                length = length + 1
-                now = now.next 
-                is_loop = True
+    while temp != slow:
+        length += 1
+        temp = temp.next
+
+
 
     return length
 
