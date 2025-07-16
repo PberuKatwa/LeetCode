@@ -52,12 +52,11 @@ def length_loop(head:LinkedList):
         return length
     
     temp = slow.next
+    length += 1
 
     while temp != slow:
         length += 1
         temp = temp.next
-
-
 
     return length
 
