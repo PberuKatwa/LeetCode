@@ -33,7 +33,7 @@ def remove_duplicates(array:list):
     for i in range(1, len(array)):
 
         if array[i] != array[i-1]:
-            print("wereee here", array[i] , array[i-1], i)
+            print(i,"wereee here", array[i] , array[i-1])
             array[n] = array[i]
             n = n + 1
 
