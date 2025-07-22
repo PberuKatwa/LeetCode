@@ -21,48 +21,32 @@
 # Output: 0
 
 def find_celebrity(matrice):
-
-    n = len(matrice)
-    i = 0
+    n = 0
+    length = len(matrice)
     candidate = 0
-    stack = list(range(n))
-    print("nnn", n)
-    print("matrice", matrice[1][0], matrice[1])
+    stack = list(range(length))
+
 
     while len(stack) > 1:
-        i = i + 1
-
-        print("stackkk before pop",stack, "cycle", i)
 
         a = stack.pop()
         b = stack.pop()
 
-        print("stackkk after pop", stack )
-
-
-        print("aa", a, "bbb", b)
-
-
         if matrice[a][b] == 1:
-            print("atartt mat aaa bbb",matrice[a][b], matrice[a])
             stack.append(b)
         else:
-            print("22222 ",matrice[a][b], matrice[a])
             stack.append(a)
 
-        print("stackk after appending", stack)
-
     if not stack:
-        return -1
-
+        return - 1
+    
     candidate = stack.pop()
-    print("candidateee", candidate)
 
     for i in range(n):
-        print("iiii", i, "cann", candidate)
-        if i != candidate and (matrice[i][candidate] != 1 or matrice[candidate][i] == 1):
-            return -1
         
+        if i!= candidate and ( matrice[candidate][i] == 1 or matrice[i][candidate] == 0 ):
+            return - 1 
+      
     return candidate
 
    
