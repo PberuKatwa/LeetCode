@@ -42,12 +42,29 @@ class BinaryTree:
         in_order_trans(self.root)
         return result
     
+    def pre_order_trasversal(self):
+        result = []
+
+        def pre_order(node):
+            if not node:
+                return
+            
+            result.append(node.val)
+            pre_order(node.left)
+            pre_order(node.right)
+
+        pre_order(self.root)    
+        return result
+    
 root = TreeNode(1)
 root.right = TreeNode(2)
 root.right.left = TreeNode(3)
 
 binary_tree = BinaryTree(root)
 
-print("binnnnn", binary_tree.in_order())
+
+
+print("innnnn", binary_tree.in_order())
+print("preee", binary_tree.pre_order_trasversal())
 
 
