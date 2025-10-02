@@ -32,6 +32,6 @@ def longest_common_prefix(list:list):
             index = index + 1
 
 
-    return
+    return consecutive
 
 print("ansss",longest_common_prefix(["flower","flow","flight"]))
