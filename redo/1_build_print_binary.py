@@ -8,7 +8,9 @@
 # Example 2:
 # Input: root = [1,2,2,null,3,null,3]
 # Output: false
- 
+
+from collections import deque
+
 class BinaryTree:
     def __init__(self,root):
         self.root = root
@@ -17,25 +19,23 @@ class BinaryTree:
         if not values:
             self.root = None
 
-
+        index = None
         if self.root is None:
             self.root = TreeNode(values[0])
             index = 1
+        else:
+            index = 0
 
-        index = 0
-        queue = [self.root]
-        tst_queue = []
+        queue =  deque( [self.root] )
 
         while index < len(values):
 
-            parent = queue.pop()
+            parent = queue.popleft()
 
             left_val = values[index] if index < len(values) else None
             right_val = values[index + 1] if index + 1 < len(values) else None
 
             if left_val is not None:
-                tst_queue.append(left_val)
-                print("lefttttt", left_val)
                 parent.left = TreeNode(left_val)
                 queue.append(parent.left)
                 index += 1
@@ -43,23 +43,21 @@ class BinaryTree:
 
 
             if right_val is not None:
-                tst_queue.append(right_val)
-                print("rightttt", right_val)
                 parent.right = TreeNode(right_val)
                 queue.append(parent.right)
                 index += 1
 
-        print('lsstt', tst_queue)
-
         return self
     
-    def print_preorder( self ):
-        if self.root is None:
-            print(None)
+    def print_preorder(self, node=None):
+        if node is None:
+            node = self.root
 
-        print(f'{self.root.val} ')
-        self.print_preorder(self.root.left)
-        self.print_preorder(self.root.right)
+        print(f'{node.val} ')
+        if node.left:
+            self.print_preorder(node.left)
+        if node.right:
+            self.print_preorder(node.right)
 
 class TreeNode:
     def __init__(self,val):
@@ -70,4 +68,4 @@ class TreeNode:
 binary_2 = BinaryTree(None)
 binary_2.build_tree([1,2,2,3,4,4,3])
 
-print( "tree 222", binary_2.print_preorder() )
+print(  binary_2.print_preorder() )
