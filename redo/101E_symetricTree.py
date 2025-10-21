@@ -13,19 +13,44 @@ class BinaryTree:
     def __init__(self,root):
         self.root = root
 
+    def build_tree(self,values:list):
+        if not values:
+            self.root = None
+
+
+        if self.root is None:
+            self.root = TreeNode(values[0])
+            index = 1
+
+        index = 0
+        queue = [self.root]
+
+        while index < len(values):
+
+            parent = queue.pop()
+
+            left_val = values[index] if index < len(values) else None
+            right_val = values[index + 1] if index + 1 < len(values) else None
+
+            if left_val is not None:
+                parent.left = TreeNode(left_val)
+                queue.append(parent.left)
+                index += 1
+
+
+
+            if right_val is not None:
+                parent.right = TreeNode(right_val)
+                queue.append(parent.right)
+                index += 1
+
+        return self
+
 class TreeNode:
     def __init__(self,val):
         self.val = val
         self.left = None
         self.right = None
-
-# binary_tree =  TreeNode(1)
-# binary_tree.left = TreeNode(2)
-# binary_tree.right = TreeNode(2)
-# binary_tree.left.left = TreeNode(3) 
-# binary_tree.left.right = TreeNode(4) 
-# binary_tree.right.left = TreeNode(4) 
-# binary_tree.right.right = TreeNode(3) 
 
 def build_tree(values:list) -> BinaryTree:
     if not values:
@@ -80,6 +105,11 @@ def print_preorder(node:TreeNode) ->str:
     print_preorder(node.left)
     print_preorder(node.right)
 
-binary_tree =  build_tree([1,2,2,3,4,4,3])
+# binary_tree =  build_tree([1,2,2,3,4,4,3])
 
-print("tree", print_preorder(binary_tree.root))
+binary_2 = BinaryTree(None)
+binary_2.build_tree([[1,2,2,3,4,4,3]])
+
+# print("tree", print_preorder(binary_tree.root))
+
+print("tree 2222", print_preorder( binary_2.root ) )
