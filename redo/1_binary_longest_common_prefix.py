@@ -45,7 +45,7 @@ def longest_common_prefix(strs:list) ->str:
     high = min_length
     while low <= high:
         mid = ( low + high ) // 2
-        print("\n ==> START BINARY COMMON PREFIX", "|| MID :", mid)
+        print("\n ==> START BINARY COMMON PREFIX", "|| MID :", mid, "|| LOW", low, "|| HIGH", high)
         if is_common_prefix(mid, strs) :
             print("\n ==> SUCCESS BINARY COMMON PREFIX", "|| MID :", mid)
             low = mid + 1

@@ -29,35 +29,33 @@
 # Note that because m = 0, there are no elements in nums1.
 # The 0 is only there to ensure the merge result can fit in nums1.
 
-class Solution:
-    @staticmethod
-    def merge_sorted_list(nums1:list,nums2:list,m:int,n:int):
-        p1 = m -1
-        p2 = n -1
-        position = len(nums1) - 1
+def merge_sorted_lists( nums_1:list, nums_2:list, m:int, n:int ) -> list :
 
-        while p1 >= 0 and p2 >= 0:
-            print("heree", "p1", p1, "p2", p2, "poss", position, "nums 1", nums1)
-            if nums1[p1] >= nums2[p2]:
-                print("p1 >>>> p2", "p1=", nums1[p1], "p2=", nums2[p2], "poss", position, "nums 1", nums1)
-                nums1[position] = nums1[p1]
-                p1 -= 1
+    total = m + n
+    pointer_a = m - 1 if m > 0 else 0
+    pointer_b = n - 1 if n > 0 else 0
+    pointer_c = total - 1
 
-            elif nums1[p1] <= nums2[p2]:
-                print("p1 <<<<< p2", "p1=", nums1[p1], "p2=", nums2[p2], "poss", position, "nums 1", nums1)
+    while pointer_c >= 0:
 
-                nums1[position] = nums2[p2]
-                p2 -= 1
+        print("numss", nums_1)
 
-            position -= 1
+        if( nums_1[ pointer_a ] >= nums_2[pointer_b] ):
+            nums_1[ pointer_c ] = nums_1[ pointer_a ]
+            pointer_a -= 1
+        else:
+            nums_1[ pointer_c ] = nums_2[ pointer_b ]
+            pointer_b -= 1
 
-            print("afff", "p1", p1, "p2", p2, "poss", position, "nums 1", nums1)
+        pointer_c -=1
 
 
-        return nums1
-    
-sort_list = Solution.merge_sorted_list(nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3)
 
-print("sortt", sort_list)
+         
 
+    return nums_1
+
+# print("listttt", merge_sorted_lists( [1,2,3,0,0,0], [2,5,6], 3, 3  ) )
+# print("listttt 222", merge_sorted_lists( [1], [], 1, 0  ) )
+print("listttt 222", merge_sorted_lists( [0], [1], 0, 1  ) )
             
